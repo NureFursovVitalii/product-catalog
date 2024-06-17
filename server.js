@@ -14,6 +14,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
 app.get('/api/products', async (req, res) => {
     try {
         const client = await pool.connect();
@@ -84,6 +86,10 @@ app.delete('/api/products/:id', async (req, res) => {
         console.error('Error deleting product:', err);
         res.status(500).send('Error deleting product');
     }
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
