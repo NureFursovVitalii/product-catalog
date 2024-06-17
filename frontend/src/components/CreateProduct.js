@@ -21,7 +21,7 @@ const CreateProduct = ({ refreshProducts }) => {
             in_cart: false
         };
 
-        axios.post('http://localhost:3001/api/products', newProduct)
+        axios.post('http://localhost:3000/api/products', newProduct)
             .then(() => {
                 refreshProducts();
                 setName('');
