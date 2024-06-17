@@ -14,7 +14,7 @@ const App = () => {
     }, []);
 
     const fetchProducts = () => {
-        axios.get('http://localhost:3000/api/products')
+        axios.get('https://vfproductcatalog.azurewebsites.net:3000/api/products')
             .then(response => setProducts(response.data))
             .catch(error => console.error(error));
     };
@@ -31,7 +31,7 @@ const App = () => {
     };
 
     const placeOrder = (order) => {
-        axios.post('http://localhost:3000/api/orders', order)
+        axios.post('https://vfproductcatalog.azurewebsites.net:3000/api/orders', order)
             .then(response => {
                 alert('Order placed successfully');
                 setCart([]);
