@@ -4,6 +4,7 @@ const cors = require('cors');
 const { Pool } = require('pg');
 const config = require('./config');
 const morgan = require('morgan');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
