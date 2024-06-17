@@ -21,7 +21,7 @@ const CreateProduct = ({ refreshProducts }) => {
             in_cart: false
         };
 
-        axios.post('https://vfproductcatalog.azurewebsites.net:3000/api/products', newProduct)
+        axios.post('https://vfproductcatalog.azurewebsites.net/api/products', newProduct)
             .then(() => {
                 refreshProducts();
                 setName('');

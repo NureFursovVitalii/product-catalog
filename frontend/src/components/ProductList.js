@@ -9,13 +9,13 @@ const ProductList = ({ addToCart }) => {
     }, []);
 
     const fetchProducts = () => {
-        axios.get('https://vfproductcatalog.azurewebsites.net:3000/api/products')
+        axios.get('https://vfproductcatalog.azurewebsites.net/api/products')
             .then(response => setProducts(response.data))
             .catch(error => console.error(error));
     };
 
     const deleteProduct = (id) => {
-        axios.delete(`https://vfproductcatalog.azurewebsites.net:3000/api/products/${id}`)
+        axios.delete(`https://vfproductcatalog.azurewebsites.net/api/products/${id}`)
             .then(() => fetchProducts())
             .catch(error => console.error(error));
     };
