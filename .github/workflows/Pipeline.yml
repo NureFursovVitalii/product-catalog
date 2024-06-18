@@ -40,6 +40,16 @@ jobs:
       - name: Build React app
         run: npm run build
 
+      - name: Build Docker image
+        run: |
+             docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-node-react-app:latest .
+             docker images
+
+      - name: Push Docker image to Docker Hub
+        run: |
+             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+             docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-node-react-app:latest
+
       - name: Azure Login
         run: |
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
